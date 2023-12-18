@@ -14,7 +14,7 @@
 
 #let title-slide(title: [], subtitle: []) = {
   set heading(outlined: false)
-  let height = 200pt
+  let height = (100% - 180pt) * 0.7
   [
     #block(
       width: 100%,
@@ -32,7 +32,7 @@
       height: height,
       fill: gradient.linear(rgb("#3366ad"), rgb("#004098")),
       [
-        #place(top + left, image("imgs/banner.svg", height: height, width: 50%, fit: "stretch"))
+        #place(top + left, image("imgs/banner.svg", height: 100%, width: 50%, fit: "stretch"))
         #set align(center + horizon)
         #set text(fill: white)
         #pad(
