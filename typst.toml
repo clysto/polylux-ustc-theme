@@ -1,0 +1,8 @@
+[package]
+name = "polylux-ustc-theme"
+version = "0.1.0"
+entrypoint = "ustc.typ"
+authors = ["Yachen Mao"]
+license = "MIT"
+exclude = ["./examples"]
+description = "This is a theme for the USTC Polylux Template."
