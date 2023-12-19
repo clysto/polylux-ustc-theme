@@ -15,7 +15,7 @@
 #let title-slide(title: [], subtitle: []) = {
   set heading(outlined: false)
   let height = (100% - 180pt) * 0.7
-  [
+  polylux-slide([
     #block(
       width: 100%,
       height: 100pt,
@@ -53,7 +53,7 @@
       fill: rgb("#f3f3f3"),
       above: 0pt,
     )
-  ]
+  ])
 }
 
 #let slide(title: [], alignment: start + top, body) = {
