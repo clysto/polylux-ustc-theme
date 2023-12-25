@@ -2,17 +2,29 @@
 
 #let ustc-footer = state("ustc-footer", [])
 
-#let ustc-theme(aspect-ratio: "16-9", footer: [], body) = {
+#let ustc-theme(aspect-ratio: "16-9", footer: [], fontset: "noto", body) = {
   set page(
     paper: "presentation-" + aspect-ratio,
     margin: 0pt,
   )
   ustc-footer.update(footer)
-  set text(size: 25pt, font: ("Noto Sans CJK SC"), lang: "zh")
-  body
+  if fontset == "noto" {
+    set text(size: 25pt, font: ("Noto Sans CJK SC"), lang: "zh")
+    body
+  } else if fontset == "fz" {
+    set text(size: 25pt, font: ("Helvetica", "FZHei-B01"), lang: "zh")
+    show strong: set text(
+      font: ("Helvetica", "FZDaHei-B02"),
+      weight: "bold"
+    )
+    show heading: it => block[*#it.body*]
+    body
+  } else {
+    panic("Illegal fontset: " + fontset)
+  }
 }
 
-#let title-slide(title: [], subtitle: []) = {
+#let title-slide(title: [], subtitle: [], title-size: 30pt, ) = {
   set heading(outlined: false)
   let height = (100% - 180pt) * 0.7
   polylux-slide([
@@ -20,7 +32,7 @@
       width: 100%,
       height: 100pt,
       fill: rgb("#f3f3f3"),
-      inset: (x: 1em),
+      inset: (x: 25pt),
       below: 0pt,
       align(horizon, image("imgs/ustc-logo.svg", width: 250pt))
     )
@@ -36,9 +48,10 @@
         #set align(center + horizon)
         #set text(fill: white)
         #pad(
-          x: 1em,
+          x: 25pt,
           [
-            = #title
+            #text(size: title-size, [*#title*])
+            #parbreak()
             #subtitle
           ]
         )
@@ -56,7 +69,7 @@
   ])
 }
 
-#let slide(title: [], alignment: start + top, body) = {
+#let slide(title: [], alignment: start + top, title-size: 30pt, body) = {
   let footer = block(
     width: 100%,
     height: 25pt,
@@ -69,6 +82,7 @@
       #set align(center + horizon)
       #pad(
         x: 25pt,
+        top: 1pt,
         {
           ustc-footer.display()
           h(1fr)
@@ -92,7 +106,7 @@
         stack(
           dir: ltr,
           spacing: 1fr,
-          align(horizon, text(fill: white, size: 30pt, weight: "bold", title)),
+          align(horizon, text(fill: white, size: title-size, [*#title*])),
           align(horizon, image("imgs/ustc-logo-white.svg", height: 40pt))
         )
       )
@@ -109,14 +123,14 @@
   polylux-slide(content)
 }
 
-#let focus-slide(body) = {
+#let focus-slide(alignment: center + horizon, body) = {
   let content = block(
     width: 100%,
     height: 100%,
     fill: gradient.linear(rgb("#3366ad"), rgb("#004098")),
     [
       #place(top + left, image("imgs/banner.svg", height: 100%, fit: "stretch"))
-      #set align(center + horizon)
+      #set align(alignment)
       #set text(fill: white)
       #pad(
         x: 25pt,
