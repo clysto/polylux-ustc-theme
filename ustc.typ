@@ -114,10 +114,10 @@
   )
   let content = align(alignment, pad(x: 25pt, y: 20pt, body))
   set page(
-    margin: (bottom: 25pt, top: 50pt),
+    margin: (bottom: 35pt, top: 50pt),
     footer: footer,
     header: header,
-    footer-descent: 0pt,
+    footer-descent: 10pt,
     header-ascent: 0pt,
   )
   polylux-slide(content)

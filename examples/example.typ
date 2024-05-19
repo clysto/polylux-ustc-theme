@@ -3,7 +3,6 @@
 #show: ustc-theme.with(
   aspect-ratio: "16-9",
   footer: "University of Science and Technology of China",
-  fontset: "fz"
 )
 
 #set par(leading: 1em)
@@ -17,7 +16,7 @@
   - This is a theme for the USTC Polylux Template.
     - #lorem(12)
   - It is written in Typst.
-  - It is awesome.
+  - It is awesome. #footnote[你好世界]
 
   hello 你好
 ]
