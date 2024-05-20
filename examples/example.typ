@@ -15,8 +15,8 @@
 #slide(title: "引言（Introduction）", alignment: horizon, title-size: 30pt)[
   - This is a theme for the USTC Polylux Template.
     - #lorem(12)
-  - It is written in Typst.
-  - It is awesome. #footnote[你好世界]
+  - It is written in Typst. #footnote[#lorem(20)]
+  - It is awesome. #footnote[#lorem(10)]
 
   hello 你好
 ]

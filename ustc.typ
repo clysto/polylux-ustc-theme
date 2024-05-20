@@ -70,6 +70,13 @@
 }
 
 #let slide(title: [], alignment: start + top, title-size: 30pt, body) = {
+  show footnote.entry: it => {
+    set text(
+      size: 0.8em,
+      fill: rgb("#666666"),
+    )
+    pad(x: 10pt, it)
+  }
   let footer = block(
     width: 100%,
     height: 25pt,
